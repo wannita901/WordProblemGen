@@ -20,7 +20,7 @@ final_embeddings=load_object('skipgram_w16.pl')
 dictionary, reverse_dictionary = load_object('dict.pl')
 def model2():
     input1 = Input(shape=(20,))
-    x = Embedding(len(dictionary),16,weights=[np.array(final_embeddings)],trainable=True)(input1)
+    x = Embedding(len(dictionary),16,weights=[np.array(load_object('skipgram_w16.pl'))],trainable=True)(input1)
     x = Conv1D(25, 7, strides=1,padding='same', activation='relu')(x)
     x = TimeDistributed(Dense(5))(x)
     x = Flatten()(x)

@@ -1,5 +1,6 @@
 from flask import Flask
 from keras.preprocessing import sequence
+from keras import backend as K
 import numpy as np
 app = Flask(__name__)
 
@@ -32,4 +33,5 @@ def problem_generate():
             continue
         output+="<p>" + str(("").join([reverse_dictionary[x] for x in testset[i] if x!=0]).strip())
         output+= '\n ans:' + str(data['answers'][i]) + "\n\n" + "</p>"
+    K.clear_session()
     return output
