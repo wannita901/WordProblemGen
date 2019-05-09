@@ -1,12 +1,23 @@
 <!doctype html>
 <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css">
+<title>Word Gen</title>
+<a href="/generate"><button class="btn-block">เขียนโจทย์ใหม่</button></a>
 <div class="paper">
     <div class="paper-content">
+        <h3>โจทย์ปัญหาคณิตศาสตร์</h3>
         <p>
-        {{ output }}
-        {% for problem in output.problems %}
-            {{ problem.pb }} </br>
-        {% endfor %}
+            {% if out!="" %}
+                {% for problem in out.problems %}
+                    {{ problem.pb }} 
+                    </br>
+                    คำตอบ : {{ problem.ans }}
+                    </br>
+                    </br>
+                {% endfor %}
+            {% else %}
+                กรุณากดปุ่มเพื่อเขียนโจทย์ใหม่
+            {% endif %}
         </p>
     </div>
 </div>
